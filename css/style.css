@@ -1,0 +1,846 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* Dimensions */
+    --width-full: 100%;
+    --width-12col: min(1200px, 100% - 40px);
+
+    /* Grid settings */
+    --grid-gap: 10px;
+    --padding-default: 20px;
+
+    /* Colors */
+    --bg-color-nav: #00000088;
+    --bg-color-light: #ededed;
+    --bg-color-dark: #111;
+    --primary-color: #C96126;
+    --color-white: #fff;
+    --color-dark: #373737;
+    --color-light: #ebebeb;
+
+    /* Color swatch categories */
+    --category-seafood: #3e30e2;
+    --category-chicken: #249c8e;
+    --category-meats: #d09189;
+    --category-veg: #298f3f;
+    --category-misc: #9a951e;
+    --category-pasta: #bf5b23;
+    --category-deserts: #9374eb;
+}
+
+/* data-category attributes */
+div[data-category="Seafood"] { border-left: 1px solid var(--category-seafood); }
+p[data-category="Seafood"], span[data-category="Seafood"] { color: var(--category-seafood); }
+
+div[data-category="Chicken"] { border-left: 1px solid var(--category-chicken); }
+p[data-category="Chicken"], span[data-category="Chicken"] { color: var(--category-chicken); }
+
+div[data-category="Pasta"] { border-left: 1px solid var(--category-pasta); }
+p[data-category="Pasta"], span[data-category="Pasta"] { color: var(--category-pasta); }
+
+div[data-category="Snacks"] { border-left: 1px solid var(--category-misc); }
+p[data-category="Snacks"], span[data-category="Snacks"] { color: var(--category-misc); }
+
+div[data-category="Beef/pork"] { border-left: 1px solid var(--category-meats); }
+p[data-category="Beef/pork"], span[data-category="Beef/pork"] { color: var(--category-meats); }
+
+div[data-category="Dessert"] { border-left: 1px solid var(--category-deserts); }
+p[data-category="Dessert"], span[data-category="Dessert"] { color: var(--category-deserts); }
+
+div[data-category="Vegetarian"] { border-left: 1px solid var(--category-veg); }
+p[data-category="Vegetarian"], span[data-category="Vegetarian"] { color: var(--category-veg); }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    background-color: var(--bg-color-dark);
+    width: var(--width-full);
+    font-family: "Roboto", sans-serif;
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.menu-open { overflow: hidden; }
+
+.container {
+    display: grid;
+    width: var(--width-full);
+    grid-template-rows: auto;
+    gap: var(--grid-gap);
+}
+
+.navigation, .hero, .image-section, .footer {
+    width: var(--width-full);
+}
+
+.todays-recipes, .categories, .content-area {
+    width: var(--width-12col);
+    margin: 0 auto;
+}
+
+/* Navigation */
+.navigation {
+    display: flex;
+    width: var(--width-full);
+    height: 80px;
+    background-color: var(--bg-color-nav);
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    z-index: 10;
+}
+
+.navigation.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.menu-container { width: var(--width-12col); }
+
+.menu-container ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menu-container ul li { list-style-type: none; }
+
+.menu-container a {
+    padding: 0 10px;
+    text-decoration: none;
+    color: var(--color-light);
+    border-right: 1px solid var(--color-light);
+}
+
+.menu-container a:hover { color: var(--primary-color); }
+.menu-container li:first-child a { padding-left: 0; }
+.menu-container li:last-child a { border-right: none; }
+
+.hamburger-menu {
+    display: none;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-light);
+    transition: color 0.3s;
+}
+
+.hamburger-menu span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: none;
+    font-size: 32px;
+    line-height: 1;
+}
+
+.hamburger-menu svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+}
+
+.hamburger-menu:hover,
+.hamburger-menu.active { color: var(--primary-color); }
+
+.mobile-menu, .menu-overlay {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    width: var(--width-full);
+    justify-content: center;
+    color: var(--color-light);
+    position: relative;
+    top: 0;
+    min-height: 600px;
+    height: auto;
+    margin: 0;
+    background-image: url("../../images/lentilsoup.png");
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.hero-container {
+    width: var(--width-12col);
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: var(--grid-gap);
+}
+
+.hero-text {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    margin-top: 200px;
+}
+
+.hero-text h4,
+.hero-text h6 {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-text h4 {
+    font-weight: 400;
+    font-size: 34px;
+    text-transform: uppercase;
+}
+
+.hero-search {
+    grid-column: 2 / span 3;
+    grid-row: 2;
+    margin-top: 50px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    background-color: transparent;
+    padding: 10px 20px 10px 40px;
+    border-radius: 5px;
+    border: 1px solid var(--bg-color-light);
+    outline: none;
+    color: var(--color-light);
+    width: 100%;
+    max-width: 300px;
+}
+
+.search-input::placeholder { color: var(--color-light); }
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.todays-recipes {
+    height: fit-content;
+    width: var(--width-12col);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.todays_recipes_headline {
+    min-height: 60px;
+    color: var(--color-white);
+    border-bottom: 1px solid var(--color-white);
+    display: flex;
+    align-items: center;
+    font-size: 37px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-left: 0;
+}
+
+.todays_recipes_content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    width: 100%;
+}
+
+.todays_recipes_content_block {
+    background-color: var(--bg-color-light);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.todays_recipes_content_block:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+.todays_recipes_content_block_image {
+    height: 220px;
+    overflow: hidden;
+}
+
+.todays_recipes_content_block_image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.todays_recipes_content_block:hover .todays_recipes_content_block_image img {
+    transform: scale(1.08);
+}
+
+.todays_recipes_content_block_text {
+    padding: 24px 28px 22px;
+    color: var(--color-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 26px;
+    flex: 1;
+}
+
+.todays_recipes_content_block_text h5 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.todays_recipes_content_block_text_top p {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #5a5a5a;
+}
+
+.todays_recipes_content_bottom_area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 8px;
+    gap: 10px;
+}
+
+.todays_recipes_content_bottom_area_left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.todays_recipes_content_bottom_area_left p {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-dark);
+}
+
+.todays_recipes_content_bottom_area_left p[data-category] { font-weight: 500; }
+
+.todays_recipes_content_bottom_area_right button {
+    background-color: var(--color-dark);
+    border: none;
+    border-radius: 3px;
+    padding: 9px 30px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.todays_recipes_content_bottom_area_right button a {
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.todays_recipes_content_bottom_area_right button a:hover { color: var(--primary-color); }
+
+.categories { width: var(--width-12col); }
+
+.categories_content {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--bg-color-light);
+    gap: 20px 30px;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 10px auto;
+    justify-content: space-evenly;
+}
+
+.categories_content_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-direction: column;
+}
+
+.categories_content_block svg { font-size: 40px; }
+
+.image-section {
+    position: relative;
+    width: var(--width-full);
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    background-image: url("../../images/ChefDish.jpeg");
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0 0, 100% 19%, 100% 100%, 0% 100%);
+}
+
+.image_section_controller {
+    position: relative;
+    width: var(--width-12col);
+    height: 100%;
+}
+
+.image_section_box {
+    position: absolute;
+    right: 0;
+    top: 145px;
+    width: 270px;
+    max-width: 100%;
+    padding: 30px 22px;
+    background-color: var(--bg-color-light);
+    color: var(--color-dark);
+    border-radius: 5px;
+}
+
+.image_section_box h4 {
+    color: var(--primary-color);
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.image_section_box p {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.content-area {
+    display: grid;
+    gap: 0;
+    padding: 40px 0 80px;
+    margin-bottom: 40px;
+}
+
+.content-area .todays_recipes_headline {
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+
+.kitchen_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 300px;
+}
+
+.kitchen_row.reverse .kitchen_image { order: -1; }
+
+.kitchen_text {
+    background-color: var(--bg-color-light);
+    color: var(--color-dark);
+    padding: 40px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.kitchen_label {
+    font-size: 13px;
+    font-weight: 700;
+    border-left: 2px solid var(--primary-color);
+    padding-left: 6px;
+    margin-bottom: 14px;
+}
+
+.kitchen_text h3 {
+    color: var(--primary-color);
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.kitchen_text p {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.kitchen_button {
+    background-color: var(--color-dark);
+    border: none;
+    border-radius: 3px;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.kitchen_button a {
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.kitchen_button a:hover { color: var(--primary-color); }
+
+.kitchen_image { overflow: hidden; }
+
+.kitchen_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-hero {
+    width: var(--width-full);
+    min-height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-light);
+    background-image: url("../../images/chef.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.about-hero-container {
+    width: var(--width-12col);
+    padding-top: 80px;
+}
+
+.about-hero h1 {
+    font-size: 42px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.about-hero p {
+    font-size: 18px;
+}
+
+/* Footer */
+.footer {
+    width: var(--width-full);
+    background-color: var(--primary-color);
+    padding: 50px 0;
+    color: var(--color-dark);
+}
+
+.footer_container {
+    width: var(--width-12col);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    align-items: center;
+}
+
+.footer_container ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer_container a {
+    color: var(--color-dark);
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.footer_container a:hover {
+    color: var(--color-white);
+}
+
+.footer_social a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer_info {
+    border-left: 1px solid var(--color-white);
+    padding-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    text-align: right;
+}
+
+.footer_info > a {
+    color: var(--color-white);
+    font-size: 13px;
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+}
+
+.footer_info > a:hover {
+    color: var(--color-dark);
+}
+
+.footer_note {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.footer_note p {
+    text-align: right;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+
+    .menu-container ul {
+        justify-content: flex-start;
+    }
+
+    .hero {
+        min-height: 600px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 65%), url("../../images/lentilsoup.png");
+        background-position: right center;
+    }
+
+    .hero-text {
+        grid-column: 1 / span 7;
+        margin-top: 170px;
+        text-align: left;
+    }
+
+    .hero-search {
+        grid-column: 1 / span 6;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 80px;
+    }
+
+    .search-box {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .todays_recipes_headline {
+        font-size: 28px;
+    }
+
+    .kitchen_row {
+        grid-template-columns: 1fr;
+    }
+
+    .kitchen_row.reverse .kitchen_image { order: 0; }
+
+    .kitchen_text { padding: 30px; }
+    .kitchen_image { height: 260px; }
+
+    .footer_container {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 30px;
+    }
+
+    .footer_info {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px solid var(--color-white);
+        padding: 30px 0 0;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer_note p { text-align: left; }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+
+    .navigation {
+        top: 0;
+        height: 60px;
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .menu-container { display: none; }
+    .hamburger-menu { display: flex; }
+
+    body.menu-open .navigation { z-index: 1002; }
+
+    .hero {
+        min-height: 560px;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 100%), url("../../images/lentilsoup.png");
+        background-size: cover;
+        background-position: 78% bottom;
+    }
+
+    .hero-text {
+        grid-column: 1 / -1;
+        margin-top: 110px;
+        text-align: center;
+    }
+    .hero-text h4 { font-size: 26px; }
+    .hero-text h6 { font-size: 14px; }
+
+    .hero-search {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: center;
+        margin-top: 190px;
+    }
+
+    .search-box { max-width: 100%; }
+    .search-input { max-width: 100%; }
+
+    .categories_content {
+        gap: 20px;
+        padding: 16px 10px;
+    }
+
+    .categories_content_block {
+        width: calc(33.333% - 14px);
+        font-size: 13px;
+    }
+
+    .kitchen_text { padding: 24px 20px; }
+    .kitchen_image { height: 220px; }
+
+    .todays_recipes_headline { font-size: 24px; }
+
+    .about-hero { min-height: 280px; }
+    .about-hero h1 { font-size: 30px; }
+
+    .image-section { height: 350px; }
+
+    .image_section_box {
+        right: 50%;
+        transform: translateX(50%);
+        top: 120px;
+        width: min(270px, 90%);
+    }
+
+    .footer_container {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: min(220px, 40%);
+        height: 100%;
+        padding-top: 80px;
+        background-color: #111;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform 0.35s ease, visibility 0.35s;
+    }
+
+    .mobile-menu.open {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
+    .mobile-menu ul { list-style: none; }
+
+    .mobile-menu a {
+        display: block;
+        padding: 18px 20px;
+        color: var(--color-light);
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        border-bottom: 1px solid #ffffff22;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    .mobile-menu a:hover {
+        color: var(--primary-color);
+        background-color: #ffffff0d;
+    }
+
+    .menu-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s ease, visibility 0.35s;
+    }
+
+    .menu-overlay.open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1400px) {
+
+    .hero {
+        min-height: 720px;
+        background-position: right center;
+    }
+
+    .hero-text {
+        grid-column: 1 / span 5;
+        margin-top: 250px;
+    }
+
+    .hero-text h4 { font-size: 44px; }
+    .hero-text h6 { font-size: 16px; }
+}
+
+/* Small phone */
+@media (max-width: 400px) {
+
+    .hero { min-height: 520px; }
+    .hero-text h4 { font-size: 22px; }
+    .hero-search { margin-top: 160px; }
+
+    .todays_recipes_headline { font-size: 21px; }
+
+    .categories_content_block { width: calc(50% - 10px); }
+
+    .todays_recipes_content_block_text { padding: 20px; }
+}
+
+/* Landscape phone / low screens */
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .hero { min-height: 100vh; }
+    .hero-text { margin-top: 90px; }
+    .hero-search { margin-top: 20px; }
+}

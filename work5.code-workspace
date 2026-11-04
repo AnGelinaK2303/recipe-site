@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../../work5"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../new"
+		},
+		{
+			"path": "../../ai-tutor-assignment"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "work5.1"
+	}
+}
