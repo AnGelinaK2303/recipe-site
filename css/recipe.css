@@ -149,7 +149,7 @@
     padding-left: 4px;
 }
 
-/* Instructions + Ingredients */
+/*  Instructions + Ingredients */
 .recipe-bonus {
     width: var(--width-12col);
     margin: 0 auto;
@@ -186,7 +186,7 @@
     line-height: 1.7;
 }
 
-/* Tablet */
+/* Tablet*/
 @media (max-width: 900px) {
 
     .recipe-top {
@@ -227,7 +227,7 @@
     }
 }
 
-/* Phone */
+/*Phone */
 @media (max-width: 600px) {
 
     .recipe-top {
