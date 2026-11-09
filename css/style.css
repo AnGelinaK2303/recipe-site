@@ -430,7 +430,7 @@ body.menu-open { overflow: hidden; }
     height: 450px;
     display: flex;
     justify-content: center;
-    background-image: url("../../images/ChefDish.jpeg");
+    background-image: url("../images/ChefDish.jpeg");
     background-size: cover;
     background-position: center;
     clip-path: polygon(0 0, 100% 19%, 100% 100%, 0% 100%);
@@ -552,7 +552,7 @@ body.menu-open { overflow: hidden; }
     align-items: center;
     text-align: center;
     color: var(--color-light);
-    background-image: url("../../images/chef.png");
+    background-image: url("../images/chef.png");
     background-size: cover;
     background-position: center;
 }
