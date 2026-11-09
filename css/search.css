@@ -1,0 +1,240 @@
+.search-page {
+    --line: rgba(255, 255, 255, 0.25);
+    --muted: #b5b5b5;
+    background-color: #111;
+    color: var(--color-white);
+}
+
+.search-page .container {
+    gap: 0;
+}
+
+.search-page .menu-container a.active {
+    color: var(--primary-color);
+}
+
+.search-top {
+    width: var(--width-12col);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 60px;
+    align-items: start;
+    padding: 150px 0 60px;
+    border-bottom: 1px solid var(--line);
+}
+
+.search-title {
+    margin-bottom: 14px;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.search-page .search-input {
+    max-width: 100%;
+    padding: 12px 20px 12px 56px;
+    font-size: 14px;
+}
+
+.search-page .search-icon {
+    left: 16px;
+    font-size: 18px;
+    color: var(--color-light);
+}
+
+.search-go {
+    margin-top: 12px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.search-go:hover {
+    color: var(--primary-color);
+}
+
+/* Filter panel */
+.filter-panel {
+    padding: 20px 24px 26px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #1f1f1f 0%, #161616 70%, #111 100%);
+}
+
+.filter-panel h2 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.filter-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
+    gap: 10px 30px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.filter-option input {
+    -webkit-appearance: none;
+    appearance: none;
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    background: transparent;
+    border: 2px solid var(--color-white);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.filter-option input:checked {
+    border-color: var(--primary-color);
+    background: radial-gradient(circle, #fff 0 3px, var(--primary-color) 4px 100%);
+}
+
+.filter-option input:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.filter-option:hover span {
+    color: var(--primary-color);
+}
+
+.filter-clear {
+    margin-top: 16px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.filter-clear:hover {
+    color: var(--primary-color);
+}
+
+/* Results */
+.search-results {
+    width: var(--width-12col);
+    margin: 0 auto;
+    padding: 50px 0 110px 90px;
+}
+
+.search-result {
+    max-width: 925px;
+    margin-bottom: 26px;
+    padding: 20px 0 34px;
+    border-bottom: 1px solid var(--line);
+}
+
+.search-result[hidden] {
+    display: none;
+}
+
+.result-label {
+    display: inline-block;
+    padding-left: 8px;
+    border-left-width: 2px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.result-label span {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.search-result h3 {
+    margin: 10px 0 12px;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.search-result h3 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.search-result h3 a:hover {
+    color: var(--color-white);
+}
+
+.search-result p {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.search-empty {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+
+    .search-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 130px 0 40px;
+    }
+
+    .search-results {
+        padding: 40px 0 70px;
+    }
+
+    .search-result h3 {
+        font-size: 22px;
+    }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+
+    .search-top {
+        padding-top: 90px;
+    }
+
+    .search-title,
+    .filter-panel h2 {
+        font-size: 20px;
+    }
+
+    .filter-panel {
+        padding: 18px 16px 22px;
+    }
+
+    .filter-options {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-auto-flow: row;
+    }
+
+    .search-result h3 {
+        font-size: 20px;
+    }
+
+    .search-result p {
+        font-size: 14px;
+    }
+}

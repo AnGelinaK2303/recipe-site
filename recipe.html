@@ -18,11 +18,32 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="recipe.html" class="active">Recipes</a></li>
-          <li><a href="#">Search</a></li>
+          <li><a href="search.html">Search</a></li>
           <li><a href="signup.html">About</a></li>
         </ul>
+        <a href="login.html" class="nav-btn">Log in</a>
+      </div>
+
+      <div class="hamburger-menu">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17h18M3 12h18M3 7h18" />
+          </svg>
+        </span>
       </div>
     </nav>
+
+    <div class="mobile-menu">
+      <ul>
+        <li><a class="menu-item" href="index.html">Home</a></li>
+        <li><a class="menu-item" href="recipe.html">Recipes</a></li>
+        <li><a class="menu-item" href="search.html">Search</a></li>
+        <li><a class="menu-item" href="signup.html">About</a></li>
+        <li><a class="menu-item" href="login.html">Log in</a></li>
+      </ul>
+    </div>
+    <div class="menu-overlay"></div>
 
     <section class="recipe-top">
 
@@ -179,7 +200,7 @@
 
         <ul class="footer_social">
           <li>
-            <a href="#">
+            <a href="https://www.youtube.com" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2.5" y="4.5" width="19" height="15" rx="3" />
                 <path d="M10 9.5v5l4.5-2.5z" />
@@ -188,7 +209,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="5" />
                 <circle cx="12" cy="12" r="4" />
@@ -198,7 +219,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="9.5" />
                 <path d="M13.5 21.5v-8h2.5l.5-3h-3V9c0-.9.4-1.5 1.5-1.5h1.6V5c-.4-.1-1.300-.2-2.200-.2c-2.200 0-3.400 1.300-3.400 3.600v2.100H9v3h2.500v8" />
@@ -210,27 +231,28 @@
 
         <ul class="footer_nav">
           <li><a href="index.html">Home</a></li>
-          <li><a href="recipe.html">Recipe</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="recipe.html">Recipes</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="signup.html">About</a></li>
         </ul>
 
         <div class="footer_info">
-          <a href="https://open.spotify.com/track/4gRA0i5sxx3jAhHaVjPnUN?si=aaba07b09223416c">https://open.spotify.com/track/4gRA0i5sxx3jAhHaVjPnUN?si=aaba07b09223416c</a>
-          <a href="https://open.spotify.com/album/6Xuu2z00jxRPZei4lJ9neK">https://open.spotify.com/album/6Xuu2z00jxRPZei4lJ9neK</a>
-
-          <div class="footer_note">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9.5" />
-              <path d="M13 6.500L8.500 13h3l-.5 4.500L15.500 11h-3z" />
-            </svg>
-            <p>Etsy is powered by 100%<br />renewable electricity.</p>
-          </div>
+          <p class="subscribe-text">Subscribe to get new recipes and updates</p>
+          <form class="subscribe-form" id="subscribeForm">
+            <input type="email" placeholder="your email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </form>
         </div>
 
       </div>
     </footer>
 
   </div>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
